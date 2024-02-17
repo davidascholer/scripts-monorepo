@@ -1,12 +1,34 @@
 #!/usr/bin/env python3
 
-import time
+import argparse
+import pathlib
+import shutil
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument("-O", "--origin", help="Database name", type=str)
+args = parser.parse_args()
 
 def main():
-    sec = input('Let us wait for user input. Let me know how many seconds to sleep now.\n')
-    print('Going to sleep for', sec, 'seconds.')
-    time.sleep(int(sec))
-    print('Enough of sleeping, I Quit!')
+
+    library_path = "/Users/grim/Code/Repos/react-component-library/react-component-library/src/test"
+    current_path = str(pathlib.Path().resolve()) + "/views/"
+    shutil.copytree(library_path, current_path)
+    print("Operation successful.")
+
+
+    # if isinstance(args.origin, str):
+    #     library_path = "/Users/grim/Code/Repos/react-component-library/react-component-library/src/test"
+    #     current_path = str(pathlib.Path().resolve()) + str(args.origin)
+    #     shutil.copytree(library_path, current_path)
+    #     print("Operation successful.")
+
+    # else:
+    #     print( "Error: origin not provided.")
+
+    return
 
 if __name__ == '__main__':
     main()
+#todo: copy folder /Users/grim/Code/Repos/react-component-library/react-component-library/src/test/Test.tsx to origin
+    
